@@ -1,6 +1,5 @@
 lines = tuple(open('data.txt', 'r'))
 TOTAL_CLASS_COUNT = 17
-percentageCounts = {'70': 0, '60': 0, '45': 0, '30': 0}
 
 
 def getMarks(percentage):
@@ -28,17 +27,41 @@ def printRow(name, id, percentage):
           '%' + "\t" + str(getMarks(percentage)))
 
 
-print("Name                ID     Percentage Marks")
-for line in lines:
-    row = line.split(' ')  # split lines with space
-    id = row[0]
-    name = row[1]
-    attendences = row[2:]
-    percentage = presencePercentage(attendences)
-    printRow(name, id, percentage)
-    # add percentage count
-    percentageCounts[percentage] = percentage
+def result(lines):
+    result = []
+    for line in lines:
+        row = line.split(' ')  # split lines with space
+        id = row[0]
+        name = row[1]
+        attendences = row[2:]
+        percentage = presencePercentage(attendences)
+        result.append([name, id, percentage])
+    return result
 
+
+print("Name                ID     Percentage Marks")
+for row in result(lines):
+    printRow(row[0], row[1], row[2])
 
 print("\n\n")
-print("Percentage                Count")
+print("Percentage     Count")
+
+
+def percentageCount(percentage_range):
+    count = 0
+    for i in result(lines):
+        if percentage_range[0] >= i[2] >= percentage_range[1]:
+            count = count + 1
+    return count
+
+
+p = [70, 60, 45, 30]
+for i, percentage in enumerate(p):
+    upper = p[i - 1] - 1
+    lower = p[i]
+    if i == 0:
+        upper = 100
+    if percentage == 30:
+        lower = 0
+
+    print(str(percentage) + "%\t\t" + str(percentageCount([upper, lower])))
