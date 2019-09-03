@@ -1,4 +1,4 @@
-from modules.presencePercentage import *
+from modules.presencePercentage import presencePercentage
 
 
 def result(lines):
