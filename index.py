@@ -17,7 +17,7 @@ for row in result(lines):
     printRow(row[0], row[1], row[2])
 
 """
-Part 2: Attendance	Percentage	(Student	Count)
+Part 2: Attendance Percentage (Student Count)
 """
 
 print("\n\n")
@@ -36,4 +36,7 @@ for i, percentage in enumerate(p):
           str(percentageCount([upper, lower], lines)))
 
 
+"""
+Part 3: Draw piechart of student attendence percentages
+"""
 openChart(percentageCountList(percentageCount, lines))
