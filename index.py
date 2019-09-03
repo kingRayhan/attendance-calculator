@@ -3,7 +3,8 @@ from modules.presencePercentage import presencePercentage
 from modules.percentageCount import percentageCount
 from modules.result import result
 from modules.printRow import printRow
-
+from modules.chart import openChart
+from modules.percentageCountList import percentageCountList
 lines = tuple(open('data.txt', 'r'))
 
 
@@ -33,3 +34,6 @@ for i, percentage in enumerate(p):
 
     print(str(percentage) + "%\t\t" +
           str(percentageCount([upper, lower], lines)))
+
+
+openChart(percentageCountList(percentageCount, lines))
