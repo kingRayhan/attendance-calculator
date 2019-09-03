@@ -1,5 +1,5 @@
 ## Attendence Calculator
 
-[Assignment File](assignment.pdf)
+[Assignment File](assets/assignment.pdf)
 
-![](ss.png)
+![](assets/preview.png)
